@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TuCancha - Login</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+    </form>
+
+    <h2>Registrarse</h2>
+    <form id="registerForm">
+      <input type="email" id="registerEmail" placeholder="Email" required />
+      <input type="password" id="registerPassword" placeholder="Contraseña" required />
+      <button type="submit">Crear cuenta</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  
+  <script type="module" src="sript/login.js"></script>
+</body>
+</html>
