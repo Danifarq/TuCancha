@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - TuCancha</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <!-- ==============================
+         SIDEBAR
+    =============================== -->
+    <div class="sidebar">
+        <h2>TuCancha Admin</h2>
+
+        <button onclick="mostrarQuinchos()">Gestionar Quinchos</button>
+        <button onclick="mostrarUsuarios()">Gestionar Usuarios</button>
+        <button onclick="window.location.href='bienvenido.html'">Volver</button>
+    </div>
+
+    <!-- ==============================
+         HEADER SUPERIOR
+    =============================== -->
+    <header class="header">
+        <h1>Panel Administrativo</h1>
+        <button id="logoutBtn" class="btn-logout">Cerrar sesión</button>
+    </header>
+
+    <!-- ==============================
+         CONTENIDO PRINCIPAL
+    =============================== -->
+    <main class="main">
+
+        <!-- Sección principal donde se inserta todo -->
+        <section id="contenidoAdmin">
+
+            <h2 class="section-title">Bienvenido al panel</h2>
+            <p>Seleccioná una opción del menú para comenzar.</p>
+
+            <!-- ==============================
+                 FORMULARIO AGREGAR QUINCHO
+            =============================== -->
+            <h2 class="section-title">Agregar Quincho</h2>
+
+            <form id="formQuincho">
+                <label for="nombreQuincho">Nombre del Quincho</label>
+                <input type="text" id="nombreQuincho" required>
+
+                <label for="capacidadQuincho">Capacidad</label>
+                <input type="number" id="capacidadQuincho" required>
+
+                <label for="descQuincho">Descripción</label>
+                <textarea id="descQuincho" required></textarea>
+
+                <button type="submit">Agregar</button>
+            </form>
+
+            <!-- ==============================
+                 TABLA DE QUINCHOS
+            =============================== -->
+            <h2 class="section-title">Listado de Quinchos</h2>
+            <div id="tablaQuinchos"></div>
+
+            <!-- ==============================
+                 TABLA DE USUARIOS
+            =============================== -->
+            <h2 class="section-title">Gestión de Usuarios</h2>
+            <div id="tablaUsuarios"></div>
+
+        </section>
+    </main>
+
+    <!-- ==============================
+         Firebase y Scripts
+    =============================== -->
+    <script src="script/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="script/admin-quinchos.js"></script>
+
+</body>
+</html>

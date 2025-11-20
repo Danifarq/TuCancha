@@ -595,7 +595,7 @@ header {
 
 .reserva-form {
   display: grid;
-  grid-template-columnfr 1fr; /* Dos columnas */
+
   gap: 20px;
 }
 
