@@ -1,241 +1,206 @@
-/* ===========================
-   ESTILOS GENERALES
-=========================== */
+/* admin.css - estilo adaptado a TuCancha (paleta: #6a11cb, #2575fc, #ff7f50, #ff4500) */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
 
 body {
-  background: #f5f7fa;
+  background: #f5f5f5;
   color: #333;
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
 }
 
-/* ===========================
-   SIDEBAR
-=========================== */
-
-.sidebar {
-  width: 260px;
-  background: linear-gradient(180deg, #6a11cb, #2575fc);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  box-shadow: 4px 0 15px rgba(0,0,0,0.2);
-}
-
-.sidebar h2 {
-  margin-bottom: 30px;
-  font-size: 24px;
-  text-align: center;
-}
-
-.sidebar button {
-  background: rgba(255,255,255,0.15);
-  margin-bottom: 15px;
-  padding: 12px;
-  border: none;
-  color: white;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
-}
-
-.sidebar button:hover {
-  background: rgba(255,255,255,0.3);
-  transform: scale(1.03);
-}
-
-/* ===========================
-   HEADER SUPERIOR
-=========================== */
-
-.header {
-  height: 70px;
-  width: 100%;
-  background: white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 25px;
-  position: fixed;
+/* HEADER */
+.site-header {
+  background: linear-gradient(90deg,#6a11cb,#2575fc);
+  padding: 12px 20px;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  position: sticky;
   top: 0;
-  left: 260px;
-  z-index: 999;
+  z-index: 50;
 }
 
-.header h1 {
-  font-size: 22px;
-  color: #444;
+.header-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
+
+.logo img {
+  height: 64px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.title-wrap h1 {
+  font-size: 20px;
+  background: linear-gradient(135deg,#fff,rgba(255,255,255,0.9));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.header-actions { margin-left: auto; }
 
 .btn-logout {
-  padding: 10px 18px;
+  background: linear-gradient(90deg,#ff7f50,#ff4500);
+  color: #fff;
   border: none;
-  background: #ff4500;
-  color: white;
+  padding: 10px 14px;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
-  transition: 0.2s;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-.btn-logout:hover {
-  background: #e63a00;
-  transform: scale(1.05);
+.btn-logout:hover { transform: translateY(-2px); }
+
+/* MAIN */
+.main-content {
+  max-width: 1150px;
+  margin: 28px auto;
+  padding: 0 16px 80px 16px;
 }
 
-/* ===========================
-   CONTENIDO PRINCIPAL
-=========================== */
-
-.main {
-  margin-left: 260px;
-  margin-top: 70px;
-  padding: 25px;
-  height: calc(100vh - 70px);
-  overflow-y: auto;
+/* CONTROLES: filtros + buscador */
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.section-title {
-  font-size: 22px;
-  margin-bottom: 15px;
-  color: #6a11cb;
-}
+.filtros { display: flex; gap: 10px; align-items: center; }
 
-/* ===========================
-   FORMULARIOS
-=========================== */
-
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  margin-bottom: 25px;
-}
-
-form label {
-  font-weight: bold;
-  display: block;
-  margin-top: 10px;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  margin-top: 5px;
-}
-
-form button {
-  margin-top: 15px;
-  background: #6a11cb;
-  border: none;
-  padding: 10px;
-  width: 160px;
-  color: white;
-  border-radius: 12px;
+/* Botones filtros */
+.filtro-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
   cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
+  font-weight: 700;
+  color: #333;
+  transition: all .18s;
 }
 
-form button:hover {
-  background: #540da3;
-  transform: scale(1.03);
-}
+.filtro-btn:hover { transform: translateY(-2px); }
 
-/* ===========================
-   TABLAS
-=========================== */
-
-table {
-  width: 100%;
-  background: white;
-  border-collapse: collapse;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-table th {
-  background: #6a11cb;
+.filtro-btn.activo {
+  background: linear-gradient(90deg,#ff7f50,#ff4500);
   color: white;
-  padding: 14px;
-  text-align: left;
-  font-size: 16px;
+  box-shadow: 0 8px 24px rgba(255,127,80,0.18);
+  border-color: transparent;
 }
 
-table td {
-  padding: 14px;
-  border-bottom: 1px solid #eee;
+/* buscador */
+.search-wrap input#buscador {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 280px;
 }
 
-table tr:hover {
-  background: #f2f2ff;
+/* LISTA (cards) */
+.lista-reservas {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-/* Botones de acción en tablas */
-.btn-eliminar,
-.btn-quitar-admin,
-.btn-hacer-admin {
-  background: #ff4500;
-  color: white;
-  padding: 8px 12px;
+/* cada card */
+.reserva-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(11,20,45,0.06);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  border-left: 8px solid #6a11cb; /* acento */
+  transition: transform .18s, box-shadow .18s;
+}
+
+.reserva-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(11,20,45,0.09);
+}
+
+/* info principal */
+.reserva-info h3 { margin-bottom: 6px; font-size: 18px; color: #222; }
+.reserva-info p { margin: 4px 0; color: #555; font-size: 14px; }
+
+/* estado */
+.estado {
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.estado-pendiente { color: #ff7f50; }
+.estado-aceptada  { color: #43e97b; }
+.estado-rechazada { color: #ff5e62; }
+
+/* acciones (botones) */
+.reserva-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.btn-aceptar {
+  background: linear-gradient(90deg,#ff7f50,#ff4500);
+  color: #fff;
   border: none;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.2s;
+  min-width: 120px;
+  box-shadow: 0 8px 20px rgba(255,127,80,0.12);
 }
 
-.btn-eliminar:hover,
-.btn-quitar-admin:hover,
-.btn-hacer-admin:hover {
-  background: #d93d00;
-  transform: scale(1.05);
+.btn-aceptar:hover { transform: translateY(-3px); }
+
+.btn-rechazar {
+  background: linear-gradient(90deg,#d9534f,#c9302c);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 120px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+.btn-rechazar:hover { transform: translateY(-3px); }
 
-@media (max-width: 800px) {
-  .sidebar {
-    width: 200px;
-  }
-  
-  .header {
-    left: 200px;
-  }
-  
-  .main {
-    margin-left: 200px;
-  }
+/* estado pequeño (para el header de la card) */
+.tag-estado {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
 }
 
-@media (max-width: 600px) {
-  .sidebar {
-    display: none;
+/* responsivo */
+@media (max-width: 720px) {
+  .reserva-card {
+    grid-template-columns: 1fr;
   }
-  
-  .header {
-    left: 0;
+  .reserva-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 12px;
   }
-  
-  .main {
-    margin-left: 0;
-  }
+  .header-inner { gap: 10px; }
+  .logo img { height: 52px; }
+  .search-wrap input#buscador { width: 100%; margin-top: 10px; }
 }
