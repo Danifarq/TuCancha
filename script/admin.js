@@ -1,8 +1,14 @@
+import { db, auth } from "./firebase-config.js";
+
 import {
   collection,
   getDocs,
   updateDoc,
   doc,
+  onSnapshot,
+  query,
+  where,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 import {
