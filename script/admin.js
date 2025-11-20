@@ -1,14 +1,13 @@
-// script/admin.js
-import { db, auth } from "./firebase-config.js"; // <-- tu firebase-config debe exportar db y auth
 import {
   collection,
-  onSnapshot,
-  doc,
+  getDocs,
   updateDoc,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import { signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  doc,
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+import {
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 /* -------------------------------------------------
   ELEMENTOS
