@@ -11,7 +11,6 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
-      <!-- Logo: ruta local subida -->
       <div class="logo">
         <img src="img/logo1-Photoroom.png" alt="TuCancha logo" />
       </div>
@@ -25,7 +24,15 @@
   </header>
 
   <main class="main-content">
-    <section class="controls">
+
+    <!-- NAV -->
+    <nav class="admin-nav">
+      <button id="btnVerReservas" class="nav-btn activo">Reservas</button>
+      <button id="btnVerUsuarios" class="nav-btn">Usuarios</button>
+    </nav>
+
+    <!-- RESERVAS -->
+    <section class="controls" id="controlesReservas">
       <div class="filtros">
         <button class="filtro-btn activo" data-estado="todas">Todas</button>
         <button class="filtro-btn" data-estado="pendiente">Pendientes</button>
@@ -38,14 +45,31 @@
     </section>
 
     <section id="listaReservas" class="lista-reservas">
-      <!-- Cards de reservas generadas por JS -->
+      <!-- Tarjetas generadas automáticamente -->
     </section>
+
+    <!-- USUARIOS -->
+    <section id="listaUsuarios" class="lista-usuarios" style="display:none;">
+      <h2>Gestión de Usuarios</h2>
+      <table class="tabla-usuarios">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tablaUsuariosBody"></tbody>
+      </table>
+    </section>
+
   </main>
 
-  <!-- canvas-confetti -->
+  <!-- CONFETTI -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Asegurate de tener script/firebase-config.js que exporte `db` y `auth` -->
+  <!-- JS ADMIN -->
   <script type="module" src="script/admin.js"></script>
+
 </body>
 </html>

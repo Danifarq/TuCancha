@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { 
   getAuth, 
@@ -12,7 +11,6 @@ import {
   setDoc, 
   getDoc 
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCBzidQybmv8MPRiPAqSGUHKaEutfGlho",
@@ -29,7 +27,9 @@ const db = getFirestore(app);
 
 const messageEl = document.getElementById("message");
 
-//Registro de usuario
+/* -------------------------------------------------
+   REGISTRO
+-------------------------------------------------*/
 document.getElementById("registerForm")?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("registerEmail").value;
@@ -38,9 +38,11 @@ document.getElementById("registerForm")?.addEventListener("submit", async (e) =>
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const uid = userCredential.user.uid;
-    await setDoc(doc(db, "users", uid), {
+
+    // Guardar en Firestore
+    await setDoc(doc(db, "usuarios", uid), {
       email: email,
-      role: "user"
+      role: "usuario"   // ← SIEMPRE ESTE NOMBRE
     });
 
     messageEl.textContent = "✅ Registro exitoso. Ahora inicia sesión.";
@@ -51,7 +53,9 @@ document.getElementById("registerForm")?.addEventListener("submit", async (e) =>
   }
 });
 
-// Inicio de sesión
+/* -------------------------------------------------
+   LOGIN
+-------------------------------------------------*/
 document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("loginEmail").value;
@@ -60,39 +64,43 @@ document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const uid = userCredential.user.uid;
-    const userDoc = await getDoc(doc(db, "users", uid));
-    const role = userDoc.exists() ? userDoc.data().role : "user";
+
+    const userDoc = await getDoc(doc(db, "usuarios", uid));
+
+    if (!userDoc.exists()) {
+      messageEl.textContent = "❌ El usuario no existe en Firestore.";
+      messageEl.style.color = "red";
+      return;
+    }
+
+    const role = userDoc.data().role || "usuario";
 
     messageEl.textContent = "✅ Sesión iniciada correctamente.";
     messageEl.style.color = "green";
 
-    // Redirigir según el rol
     setTimeout(() => {
       if (role === "admin") {
         window.location.href = "admin.html";
       } else {
         window.location.href = "bienvenido.html";
       }
-    }, 1000);
+    }, 800);
 
   } catch (error) {
     messageEl.textContent = "❌ " + error.message;
     messageEl.style.color = "red";
   }
 });
-// Cerrar sesión
-document.getElementById("BtnCerrarScn")?.addEventListener("click", async (e) => {
-  e.preventDefault();
+
+/* -------------------------------------------------
+   LOGOUT
+-------------------------------------------------*/
+document.getElementById("BtnCerrarScn")?.addEventListener("click", async () => {
   try {
     await signOut(auth);
-    messageEl.textContent = "✅ Sesión cerrada.";
-    messageEl.style.color = "green";
-    setTimeout(() => {
-      window.location.href = "index.html"; // redirige a inicio
-    }, 1000);
+    window.location.href = "index.html";
   } catch (error) {
     messageEl.textContent = "❌ " + error.message;
     messageEl.style.color = "red";
   }
 });
-
